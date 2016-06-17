@@ -1,0 +1,123 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #707070;
+  margin-left: 30px
+}
+
+.heading {
+  text-align: center;
+  color: white;
+}
+
+.wrap {
+  height: 100%;
+  overflow: hidden;
+}
+.sidebar {
+  color: white;
+  background-color: #404040;
+  background-repeat: repeat;
+  padding:0;
+  height:100% !important;
+  position:relative;
+}
+
+.sidebar .sidebar-content {
+  height:100%;
+  width:100%;
+  padding: 5px;
+  margin:0;
+  position:relative;
+}
+
+.navbar {
+  background-color: darkgrey;
+}
+
+.buttonlist {
+  color: black;
+}
+
+.listing-section {
+  margin-left: 20px;
+}
+
+.notebook-block, .note-block {
+  width: 160px;
+  height: 160px;
+  background-color: #D8D8D8;
+  border-style: groove;
+  border-color: darkgrey;
+  border-width: 1px;
+  border-radius: 10px;
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.notebook-text, .note-text {
+  position: relative;
+  top: 30%;
+  border-style: dashed;
+  border-color: #808080;
+  border-radius: 10px;
+  border-width: 1px;
+  text-align: center;
+  font-size: 17px ;
+  word-wrap: break-word;
+}
+
+.font-size14 {
+  font-size: 14px;
+  vertical-align: center;
+}
+
+.notebook-navbar, .note-navbar {
+  height: 40px;
+  /*
+  background-color: #D8D8D8;
+  border-style: groove;
+  border-color: darkgrey;
+  border-width: 1px;
+  border-radius: 10px;
+  */
+  margin-bottom: 20px;
+}
+
+.add-btn {
+  margin-left: 20px;
+  border-style: solid;
+  border-color: darkgrey;
+  border-width: 1px;
+  vertical-align: middle;
+}
+
+.buttonlist {
+/*  margin-left: 50%;
+  margin-right: 50%;
+*/}
+
+.buttonlist .button {
+  margin-top: 20px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.white {
+  color: white;
+}
+
+.pull-left {
+  float: left;
+}
+
+.new-note-space {
+  background-color: white;
+  height: 400px;
+  width: 300px;
+}
