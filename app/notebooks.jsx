@@ -25,10 +25,6 @@ var Notebooks = React.createClass({
     this.props.createNotebook(notebook_name)
   },
 
-  handleClick: function(e){
-    debugger
-  },
-
   renderNotebooks: function() {
     return this.props.data.map( function(notebook, index) {
       var _this = this

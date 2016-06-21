@@ -6,8 +6,9 @@ var Notes = React.createClass({
   getInitialState: function(){
     return {
       get_note_name: false,
-      note_name: '',
-      selected_notebook_index: 0
+      new_note_title: '',
+      new_note_text: '',
+      selected_notebook_index: 0,
     }
   },
 
@@ -25,12 +26,14 @@ var Notes = React.createClass({
   },
 
   createNote: function(e) {
-    var note_name = this.state.note_name,
-        selected_notebook_index = this.state.selected_notebook_index
-    this.setState({note_name: ''})
+    var new_note_title = this.state.new_note_title,
+        selected_notebook_index = this.state.selected_notebook_index,
+        new_note_text = this.state.new_note_text
+    this.setState({new_note_title: ''})
+    this.setState({new_note_text: ''})
     this.setState({selected_notebook_index: 0})
     this.setState({get_note_name: false})
-    this.props.createNote(note_name, selected_notebook_index)
+    this.props.createNote(new_note_title, new_note_text, selected_notebook_index)
   },
 
   renderNotes: function() {
@@ -48,34 +51,34 @@ var Notes = React.createClass({
     )
   },
 
+  changeNewNoteText: function(e) {
+    this.setState({new_note_text: e.target.innerHTML.replace(/$nbsp;/ig, '')})
+  },
+
+  changeNewNoteTitle: function(e) {
+    this.setState({new_note_title: e.target.innerHTML.replace(/$nbsp;/ig, '')})
+  },
+
   render() {
     return (
-      <div className='container-fluid'>
-        <div className='row note-navbar'>
-          {
-            this.state.get_note_name ?
-              ''
-            :
-              <button className='btn add-btn' onClick={this.getNoteName}> Add Note </button>
-          }
-        </div>
-        <div className='row'>
-          <div className='col-md-6'>
+      <div className='container-fluid row'>
+        <div className='col-md-6'>
+          <div className='row note-navbar'>
+          </div>
+          <div className='row'>
            { this.renderNotes() }
           </div>
-          <div className='col-md-6 new-note-space'>
-            {
-              this.state.get_note_name ?
-                <div pull-left>
-                  <input value={this.state.note_name} name='note_name' placeholder='Enter name' onChange={this.handleChange}/>
-                  &nbsp; <span className='white'>for</span> &nbsp;
-                  <SelectBox className="select-list" name="notebooks" onValueChange={this.handleSelectBoxChange} defaultValue={0} rows={ this.props.data.map(function(notebook, index){ return [index, notebook.name] })} renderBlank={false}/>
-                  &nbsp;&nbsp;&nbsp;
-                  <input type='submit' onClick={this.createNote} value="Create Note" />
-                </div>
-              :
-                ''
-            }
+        </div>
+        <div className='col-md-4'>
+          <div className='row white'>
+            New Note for <SelectBox className="select-list" name="notebooks" onValueChange={this.handleSelectBoxChange} defaultValue={0} rows={ this.props.data.map(function(notebook, index){ return [index, notebook.name] })} renderBlank={false}/>
+            <button className='btn add-btn pull-right' onClick={this.createNote}> Create Note </button>
+          </div>
+          <div className='row new-note-title' id="textarea" contentEditable='true' onInput={this.changeNewNoteTitle} placeholder='Title' data-placeholder='Title'>
+            {this.state.new_note_title.replace(/&nbsp;/, ' ')}
+          </div>
+          <div className='row new-note-text' id="textarea" contentEditable='true' onInput={this.changeNewNoteText} placeholder='Text' data-placeholder='Text'>
+            {this.state.new_note_text}
           </div>
         </div>
       </div>

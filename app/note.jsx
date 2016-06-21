@@ -1,4 +1,5 @@
 import React from 'react';
+import textTruncate from './utils/decorators.jsx'
 
 var Note = React.createClass({
   getInitialState: function(){
@@ -12,7 +13,7 @@ var Note = React.createClass({
         <div className='note-text'>
           {this.props.data.name}
           <br/>
-          <span className='font-size14'>{this.props.data.text}</span>
+          <span className='font-size14'>{textTruncate(this.props.data.text)}</span>
         </div>
       </div>
     )

@@ -2,12 +2,11 @@ import React from 'react';
 import Sidebar from './sidebar.jsx';
 import Notebooks from './notebooks.jsx';
 import Notes from './notes.jsx';
-import { Row, Col } from 'react-bootstrap';
 
 var Evernote = React.createClass({
   getInitialState() {
     return {
-      currently_viewing: 'notebooks',
+      currently_viewing: 'notes',
       notebooks: [
         {
           name: 'my-notebook1',
@@ -54,10 +53,10 @@ var Evernote = React.createClass({
     this.setState({notebooks: notebooks})
   },
 
-  createNote: function(note_name, notebook_index) {
+  createNote: function(note_title, note_text, notebook_index) {
     var notebooks = this.state.notebooks
     notebooks[notebook_index].notes = notebooks[notebook_index].notes || []
-    notebooks[notebook_index].notes.push({ name: note_name })
+    notebooks[notebook_index].notes.push({ name: note_title, text: note_text })
     this.setState({notebooks: notebooks})
   },
 
