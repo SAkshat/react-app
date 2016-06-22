@@ -57,8 +57,11 @@
 	
 	var _reactDom = __webpack_require__(/*! react-dom */ 38);
 	
+<<<<<<< Updated upstream
 	var _reactRouter = __webpack_require__(/*! react-router */ 168);
 	
+=======
+>>>>>>> Stashed changes
 	var _evernote = __webpack_require__(/*! ./evernote.jsx */ 229);
 	
 	var _evernote2 = _interopRequireDefault(_evernote);
@@ -20909,7 +20912,68 @@
 	module.exports = ReactMount.renderSubtreeIntoContainer;
 
 /***/ },
-/* 168 */
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */
 /*!*************************************!*\
   !*** ./~/react-router/lib/index.js ***!
   \*************************************/
@@ -20944,7 +21008,11 @@
 	  }
 	});
 	
+<<<<<<< Updated upstream
 	var _PatternUtils = __webpack_require__(/*! ./PatternUtils */ 175);
+=======
+	var _sidebar = __webpack_require__(/*! ./sidebar.jsx */ 230);
+>>>>>>> Stashed changes
 	
 	Object.defineProperty(exports, 'formatPattern', {
 	  enumerable: true,
@@ -20953,11 +21021,19 @@
 	  }
 	});
 	
+<<<<<<< Updated upstream
 	var _Router2 = __webpack_require__(/*! ./Router */ 177);
+=======
+	var _notebooks = __webpack_require__(/*! ./notebooks.jsx */ 231);
+>>>>>>> Stashed changes
 	
 	var _Router3 = _interopRequireDefault(_Router2);
 	
+<<<<<<< Updated upstream
 	var _Link2 = __webpack_require__(/*! ./Link */ 206);
+=======
+	var _notes = __webpack_require__(/*! ./notes.jsx */ 233);
+>>>>>>> Stashed changes
 	
 	var _Link3 = _interopRequireDefault(_Link2);
 	
@@ -20975,7 +21051,20 @@
 	
 	var _IndexRoute2 = __webpack_require__(/*! ./IndexRoute */ 212);
 	
+<<<<<<< Updated upstream
 	var _IndexRoute3 = _interopRequireDefault(_IndexRoute2);
+=======
+	exports.default = Evernote;
+
+/***/ },
+/* 230 */
+/*!************************************!*\
+  !*** ./src/client/app/sidebar.jsx ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+>>>>>>> Stashed changes
 	
 	var _Redirect2 = __webpack_require__(/*! ./Redirect */ 211);
 	
@@ -20993,7 +21082,20 @@
 	
 	var _Lifecycle3 = _interopRequireDefault(_Lifecycle2);
 	
+<<<<<<< Updated upstream
 	var _RouteContext2 = __webpack_require__(/*! ./RouteContext */ 216);
+=======
+	exports.default = SideBar;
+
+/***/ },
+/* 231 */
+/*!**************************************!*\
+  !*** ./src/client/app/notebooks.jsx ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+>>>>>>> Stashed changes
 	
 	var _RouteContext3 = _interopRequireDefault(_RouteContext2);
 	
@@ -21009,7 +21111,11 @@
 	
 	var _RoutingContext3 = _interopRequireDefault(_RoutingContext2);
 	
+<<<<<<< Updated upstream
 	var _PropTypes3 = _interopRequireDefault(_PropTypes2);
+=======
+	var _notebook = __webpack_require__(/*! ./notebook.jsx */ 237);
+>>>>>>> Stashed changes
 	
 	var _match2 = __webpack_require__(/*! ./match */ 219);
 	
@@ -21073,6 +21179,7 @@
 	exports.createMemoryHistory = _createMemoryHistory3.default;
 
 /***/ },
+<<<<<<< Updated upstream
 /* 169 */
 /*!******************************************!*\
   !*** ./~/react-router/lib/RouteUtils.js ***!
@@ -26939,6 +27046,9 @@
 	exports.default = NotebookAvatar;
 
 /***/ },
+=======
+/* 232 */,
+>>>>>>> Stashed changes
 /* 233 */
 /*!**********************************!*\
   !*** ./src/client/app/notes.jsx ***!
@@ -26959,7 +27069,11 @@
 	
 	var _select_box2 = _interopRequireDefault(_select_box);
 	
+<<<<<<< Updated upstream
 	var _note_avatar = __webpack_require__(/*! ./note_avatar.jsx */ 235);
+=======
+	var _note = __webpack_require__(/*! ./note.jsx */ 238);
+>>>>>>> Stashed changes
 	
 	var _note_avatar2 = _interopRequireDefault(_note_avatar);
 	
@@ -27167,10 +27281,95 @@
 	exports.default = SelectBox;
 
 /***/ },
+<<<<<<< Updated upstream
 /* 235 */
 /*!****************************************!*\
   !*** ./src/client/app/note_avatar.jsx ***!
   \****************************************/
+=======
+/* 235 */,
+/* 236 */
+/*!*********************************************!*\
+  !*** ./src/client/app/utils/decorators.jsx ***!
+  \*********************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	function textTruncate() {
+	  var string = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+	  var truncate_length = arguments.length <= 1 || arguments[1] === undefined ? 20 : arguments[1];
+	  var truncator = arguments.length <= 2 || arguments[2] === undefined ? '...' : arguments[2];
+	
+	  if (string.length < truncate_length) {
+	    return string;
+	  } else {
+	    return string.substring(0, truncate_length - truncator.length).concat(truncator);
+	  }
+	}
+	
+	exports.default = textTruncate;
+
+/***/ },
+/* 237 */
+/*!*************************************!*\
+  !*** ./src/client/app/notebook.jsx ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Notebook = _react2.default.createClass({
+	  displayName: 'Notebook',
+	
+	  getInitialState: function getInitialState() {
+	    return {};
+	  },
+	
+	  render: function render() {
+	    var note_count = (this.props.data.notes || []).length;
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'notebook-block' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'notebook-text' },
+	        this.props.data.name,
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'font-size14' },
+	          note_count,
+	          ' Note',
+	          note_count == 1 ? '' : 's'
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	exports.default = Notebook;
+
+/***/ },
+/* 238 */
+/*!*********************************!*\
+  !*** ./src/client/app/note.jsx ***!
+  \*********************************/
+>>>>>>> Stashed changes
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27218,6 +27417,7 @@
 	
 	exports.default = NoteAvatar;
 
+<<<<<<< Updated upstream
 /***/ },
 /* 236 */
 /*!*********************************************!*\
@@ -27244,6 +27444,8 @@
 	
 	exports.default = textTruncate;
 
+=======
+>>>>>>> Stashed changes
 /***/ }
 /******/ ]);
 //# sourceMappingURL=bundle.js.map
