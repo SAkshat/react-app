@@ -21106,7 +21106,8 @@
 	  },
 	
 	  renderNotebooks: function renderNotebooks() {
-	    return this.props.data.map(function (notebook, index) {
+	    var notebooks = this.props.data || [];
+	    return notebooks.map(function (notebook, index) {
 	      var _this = this;
 	      return _react2.default.createElement(
 	        'div',
@@ -21233,7 +21234,8 @@
 	      get_note_name: false,
 	      new_note_title: '',
 	      new_note_text: '',
-	      selected_notebook_index: 0
+	      selected_notebook_index: 0,
+	      show_title_placeholder: true
 	    };
 	  },
 	
@@ -21284,7 +21286,22 @@
 	    this.setState({ new_note_title: e.target.innerHTML.replace(/$nbsp;/ig, '') });
 	  },
 	
+	  hideTitlePlaceholders: function hideTitlePlaceholders(e) {
+	    this.setState({ show_title_placeholder: false });
+	  },
+	
+	  showTitlePlaceholders: function showTitlePlaceholders(e) {
+	    console.log(this.state.new);
+	    if (this.state.new_note_title.length > 0) {
+	      this.setState({ show_title_placeholder: false });
+	    } else {
+	      this.setState({ show_title_placeholder: true });
+	    }
+	  },
+	
 	  render: function render() {
+	    var title = this.state.new_note_title,
+	        text = this.state.new_note_text;
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'container-fluid row' },
@@ -21316,13 +21333,13 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'row new-note-title', id: 'textarea', contentEditable: 'true', onInput: this.changeNewNoteTitle, placeholder: 'Title', 'data-placeholder': 'Title' },
-	          this.state.new_note_title.replace(/&nbsp;/, ' ')
+	          { className: 'row new-note-title placeholder-title', id: 'textarea', contentEditable: 'true', onInput: this.changeNewNoteTitle },
+	          title.replace(/&nbsp;/, ' ')
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'row new-note-text', id: 'textarea', contentEditable: 'true', onInput: this.changeNewNoteText, placeholder: 'Text', 'data-placeholder': 'Text' },
-	          this.state.new_note_text
+	          { className: 'row new-note-text placeholder-text', id: 'textarea', contentEditable: 'true', onInput: this.changeNewNoteText },
+	          text.replace(/&nbsp;/, ' ')
 	        )
 	      )
 	    );
@@ -21466,11 +21483,10 @@
 	  value: true
 	});
 	
-	function textTruncate() {
-	  var string = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
-	  var truncate_length = arguments.length <= 1 || arguments[1] === undefined ? 20 : arguments[1];
-	  var truncator = arguments.length <= 2 || arguments[2] === undefined ? '...' : arguments[2];
-	
+	function textTruncate(string, truncate_length, truncator) {
+	  var string = string || '',
+	      truncate_length = truncate_length || 20,
+	      truncator = truncator || '...';
 	  if (string.length < truncate_length) {
 	    return string;
 	  } else {

@@ -26,7 +26,8 @@ var Notebooks = React.createClass({
   },
 
   renderNotebooks: function() {
-    return this.props.data.map( function(notebook, index) {
+    var notebooks = this.props.data || []
+    return notebooks.map( function(notebook, index) {
       var _this = this
         return (
           <div key={index}>

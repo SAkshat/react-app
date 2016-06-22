@@ -9,6 +9,7 @@ var Notes = React.createClass({
       new_note_title: '',
       new_note_text: '',
       selected_notebook_index: 0,
+      show_title_placeholder: true
     }
   },
 
@@ -59,7 +60,22 @@ var Notes = React.createClass({
     this.setState({new_note_title: e.target.innerHTML.replace(/$nbsp;/ig, '')})
   },
 
+  hideTitlePlaceholders: function(e) {
+    this.setState({show_title_placeholder: false})
+  },
+
+  showTitlePlaceholders: function(e) {
+    console.log(this.state.new)
+    if(this.state.new_note_title.length > 0) {
+      this.setState({show_title_placeholder: false})
+    } else {
+      this.setState({show_title_placeholder: true})
+    }
+  },
+
   render() {
+    var title = this.state.new_note_title,
+        text = this.state.new_note_text;
     return (
       <div className='container-fluid row'>
         <div className='col-md-6'>
@@ -74,11 +90,11 @@ var Notes = React.createClass({
             New Note for <SelectBox className="select-list" name="notebooks" onValueChange={this.handleSelectBoxChange} defaultValue={0} rows={ this.props.data.map(function(notebook, index){ return [index, notebook.name] })} renderBlank={false}/>
             <button className='btn add-btn pull-right' onClick={this.createNote}> Create Note </button>
           </div>
-          <div className='row new-note-title' id="textarea" contentEditable='true' onInput={this.changeNewNoteTitle} placeholder='Title' data-placeholder='Title'>
-            {this.state.new_note_title.replace(/&nbsp;/, ' ')}
+          <div className='row new-note-title placeholder-title' id="textarea" contentEditable='true' onInput={this.changeNewNoteTitle}>
+            {title.replace(/&nbsp;/, ' ')}
           </div>
-          <div className='row new-note-text' id="textarea" contentEditable='true' onInput={this.changeNewNoteText} placeholder='Text' data-placeholder='Text'>
-            {this.state.new_note_text}
+          <div className='row new-note-text placeholder-text' id="textarea" contentEditable='true' onInput={this.changeNewNoteText}>
+            {text.replace(/&nbsp;/, ' ')}
           </div>
         </div>
       </div>

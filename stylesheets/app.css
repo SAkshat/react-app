@@ -146,3 +146,23 @@ body {
     width: 400px;
 }
 
+.placeholder-title:empty:before {
+  content: "Enter title here...";
+}
+
+.placeholder-title:focus:empty:before {
+  content: " ";
+}
+
+.placeholder-text:empty:before {
+  content: "Enter text here...";
+}
+
+.placeholder-text:focus:empty:before {
+  content: " ";
+}
+
+.hidden {
+  display: none;
+}
+
