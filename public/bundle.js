@@ -21071,9 +21071,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _notebook = __webpack_require__(/*! ./notebook.jsx */ 171);
+	var _notebook_avatar = __webpack_require__(/*! ./notebook_avatar.jsx */ 176);
 	
-	var _notebook2 = _interopRequireDefault(_notebook);
+	var _notebook_avatar2 = _interopRequireDefault(_notebook_avatar);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -21112,7 +21112,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { key: index },
-	        _react2.default.createElement(_notebook2.default, { data: notebook })
+	        _react2.default.createElement(_notebook_avatar2.default, { data: notebook })
 	      );
 	    });
 	  },
@@ -21148,56 +21148,7 @@
 	exports.default = Notebooks;
 
 /***/ },
-/* 171 */
-/*!*************************************!*\
-  !*** ./src/client/app/notebook.jsx ***!
-  \*************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Notebook = _react2.default.createClass({
-	  displayName: 'Notebook',
-	
-	  getInitialState: function getInitialState() {
-	    return {};
-	  },
-	
-	  render: function render() {
-	    var note_count = (this.props.data.notes || []).length;
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'notebook-block' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'notebook-text' },
-	        this.props.data.name,
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'font-size14' },
-	          note_count,
-	          ' Note',
-	          note_count == 1 ? '' : 's'
-	        )
-	      )
-	    );
-	  }
-	});
-	
-	exports.default = Notebook;
-
-/***/ },
+/* 171 */,
 /* 172 */
 /*!**********************************!*\
   !*** ./src/client/app/notes.jsx ***!
@@ -21218,9 +21169,9 @@
 	
 	var _select_box2 = _interopRequireDefault(_select_box);
 	
-	var _note = __webpack_require__(/*! ./note.jsx */ 174);
+	var _note_avatar = __webpack_require__(/*! ./note_avatar.jsx */ 177);
 	
-	var _note2 = _interopRequireDefault(_note);
+	var _note_avatar2 = _interopRequireDefault(_note_avatar);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -21273,7 +21224,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { key: index },
-	        _react2.default.createElement(_note2.default, { data: note })
+	        _react2.default.createElement(_note_avatar2.default, { data: note })
 	      );
 	    });
 	  },
@@ -21419,10 +21370,87 @@
 	exports.default = SelectBox;
 
 /***/ },
-/* 174 */
-/*!*********************************!*\
-  !*** ./src/client/app/note.jsx ***!
-  \*********************************/
+/* 174 */,
+/* 175 */
+/*!*********************************************!*\
+  !*** ./src/client/app/utils/decorators.jsx ***!
+  \*********************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	function textTruncate(string, truncate_length, truncator) {
+	  var string = string || '',
+	      truncate_length = truncate_length || 20,
+	      truncator = truncator || '...';
+	  if (string.length < truncate_length) {
+	    return string;
+	  } else {
+	    return string.substring(0, truncate_length - truncator.length).concat(truncator);
+	  }
+	}
+	
+	exports.default = textTruncate;
+
+/***/ },
+/* 176 */
+/*!********************************************!*\
+  !*** ./src/client/app/notebook_avatar.jsx ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var NotebookAvatar = _react2.default.createClass({
+	  displayName: 'NotebookAvatar',
+	
+	  getInitialState: function getInitialState() {
+	    return {};
+	  },
+	
+	  render: function render() {
+	    var note_count = (this.props.data.notes || []).length;
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'notebook-block' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'notebook-text' },
+	        this.props.data.name,
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'font-size14' },
+	          note_count,
+	          ' Note',
+	          note_count == 1 ? '' : 's'
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	exports.default = NotebookAvatar;
+
+/***/ },
+/* 177 */
+/*!****************************************!*\
+  !*** ./src/client/app/note_avatar.jsx ***!
+  \****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21441,8 +21469,8 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Note = _react2.default.createClass({
-	  displayName: 'Note',
+	var NoteAvatar = _react2.default.createClass({
+	  displayName: 'NoteAvatar',
 	
 	  getInitialState: function getInitialState() {
 	    return {};
@@ -21468,33 +21496,7 @@
 	
 	});
 	
-	exports.default = Note;
-
-/***/ },
-/* 175 */
-/*!*********************************************!*\
-  !*** ./src/client/app/utils/decorators.jsx ***!
-  \*********************************************/
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	function textTruncate(string, truncate_length, truncator) {
-	  var string = string || '',
-	      truncate_length = truncate_length || 20,
-	      truncator = truncator || '...';
-	  if (string.length < truncate_length) {
-	    return string;
-	  } else {
-	    return string.substring(0, truncate_length - truncator.length).concat(truncator);
-	  }
-	}
-	
-	exports.default = textTruncate;
+	exports.default = NoteAvatar;
 
 /***/ }
 /******/ ]);

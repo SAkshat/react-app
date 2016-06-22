@@ -1,6 +1,6 @@
 import React from 'react';
 import SelectBox from './common_components/select_box.jsx'
-import Note from './note.jsx'
+import NoteAvatar from './note_avatar.jsx'
 
 var Notes = React.createClass({
   getInitialState: function(){
@@ -45,7 +45,7 @@ var Notes = React.createClass({
     return notes.map( function(note, index) {
         return (
           <div key={index}>
-            <Note data={note} />
+            <NoteAvatar data={note} />
           </div>
         )
       }

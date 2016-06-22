@@ -1,5 +1,5 @@
 import React from 'react';
-import Notebook from './notebook.jsx'
+import NotebookAvatar from './notebook_avatar.jsx'
 
 var Notebooks = React.createClass({
   getInitialState: function(){
@@ -31,7 +31,7 @@ var Notebooks = React.createClass({
       var _this = this
         return (
           <div key={index}>
-            <Notebook data={notebook} />
+            <NotebookAvatar data={notebook} />
           </div>
         )
       }

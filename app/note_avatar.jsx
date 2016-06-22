@@ -1,7 +1,7 @@
 import React from 'react';
 import textTruncate from './utils/decorators.jsx'
 
-var Note = React.createClass({
+var NoteAvatar = React.createClass({
   getInitialState: function(){
     return {
     }
@@ -22,4 +22,4 @@ var Note = React.createClass({
 });
 
 
-export default Note;
+export default NoteAvatar;

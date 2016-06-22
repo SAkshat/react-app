@@ -1,6 +1,6 @@
 import React from 'react';
 
-var Notebook = React.createClass({
+var NotebookAvatar = React.createClass({
   getInitialState: function(){
     return {
     }
@@ -21,4 +21,4 @@ var Notebook = React.createClass({
 });
 
 
-export default Notebook;
+export default NotebookAvatar;
