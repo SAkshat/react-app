@@ -75,7 +75,14 @@ var Notes = React.createClass({
 
   render() {
     var title = this.state.new_note_title,
-        text = this.state.new_note_text;
+        text = this.state.new_note_text,
+        select_list_data = [],
+        data = this.props.data;
+
+    if(data && data.constructor == Array) {
+      select_list_data = data.map(function(notebook, index){ return [index, notebook.name] })
+    }
+
     return (
       <div className='container-fluid row'>
         <div className='col-md-6'>
@@ -87,7 +94,7 @@ var Notes = React.createClass({
         </div>
         <div className='col-md-4'>
           <div className='row white'>
-            New Note for <SelectBox className="select-list" name="notebooks" onValueChange={this.handleSelectBoxChange} defaultValue={0} rows={ this.props.data.map(function(notebook, index){ return [index, notebook.name] })} renderBlank={false}/>
+            New Note for <SelectBox className="select-list" name="notebooks" onValueChange={this.handleSelectBoxChange} defaultValue={0} rows={select_list_data } renderBlank={false}/>
             <button className='btn add-btn pull-right' onClick={this.createNote}> Create Note </button>
           </div>
           <div className='row new-note-title placeholder-title' id="textarea" contentEditable='true' onInput={this.changeNewNoteTitle}>

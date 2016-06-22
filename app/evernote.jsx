@@ -2,6 +2,8 @@ import React from 'react';
 import Sidebar from './sidebar.jsx';
 import Notebooks from './notebooks.jsx';
 import Notes from './notes.jsx';
+import { Link, Router } from 'react-router';
+import RouteHandler from 'react-router';
 
 var Evernote = React.createClass({
   getInitialState() {
@@ -71,16 +73,14 @@ var Evernote = React.createClass({
         </div>
         <div className='row app-body'>
           <div className='Col-md-2 sidebar'>
-            <Sidebar changeViewTo={this.changeViewTo} />
+            <div className='buttonlist'>
+              <Link to="/notebooks" className='button btn-block' {...this.props} >Notebooks</Link>
+              <Link to="/notes" className='button btn-block' {...this.props} >Notes</Link>
+            </div>
           </div>
           <div className='col-md-10'>
             <div className='row listing-section'>
-              {
-                this.state.currently_viewing == 'notes' ?
-                  <Notes data={this.state.notebooks} createNote={this.createNote} />
-                :
-                  <Notebooks data={this.state.notebooks} createNotebook={this.createNotebook} />
-              }
+              {this.props.children}
             </div>
           </div>
         </div>
