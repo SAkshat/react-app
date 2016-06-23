@@ -1,25 +1,27 @@
 import React from 'react';
-import SelectBox from './common_components/select_box.jsx'
 import NoteAvatar from './note_avatar.jsx'
 
 var Notes = React.createClass({
   getInitialState: function(){
+    var current_notebook = this.getCurrentNotebook()
     return {
       get_note_name: false,
       new_note_title: '',
       new_note_text: '',
-      selected_notebook_id: this.props.data[0] && this.props.data[0].id || '',
-      show_title_placeholder: true
+      selected_notebook_index: this.props.params.notebook_id,
+      show_title_placeholder: true,
+      current_notebook: current_notebook
     }
   },
 
-  handleSelectBoxChange: function(selected_notebook_id) {
-    this.setState({selected_notebook_id: selected_notebook_id})
-  },
-
-  handleChange: function(e) {
-    const name = e.target.name;
-    this.setState({[`${name}`]: e.target.value});
+  getCurrentNotebook: function() {
+    var notebook_id = this.props.params.notebook_id,
+        current_notebook = '',
+        notebooks = this.props.data || [],
+        index = notebooks.findIndex(function(currentElement, currentIndex, array) {
+                  return(currentElement.id == notebook_id)
+                });
+    return notebooks[index]
   },
 
   getNoteName: function(e) {
@@ -28,20 +30,17 @@ var Notes = React.createClass({
 
   createNote: function(e) {
     var new_note_title = this.state.new_note_title,
-        selected_notebook_id = this.state.selected_notebook_id,
+        selected_notebook_index = this.state.selected_notebook_index,
         new_note_text = this.state.new_note_text
     this.setState({new_note_title: ''})
     this.setState({new_note_text: ''})
-    this.setState({selected_notebook_id: ''})
+    this.setState({selected_notebook_index: 0})
     this.setState({get_note_name: false})
-    this.props.createNote(new_note_title, new_note_text, selected_notebook_id)
+    this.props.createNote(new_note_title, new_note_text, selected_notebook_index)
   },
 
   renderNotes: function() {
-    var notes = [], index;
-    for(index in this.props.data) {
-      notes = notes.concat(this.props.data[index].notes || [])
-    }
+    var notes = this.state.current_notebook.notes || [];
     return notes.map( function(note, index) {
         return (
           <div key={index}>
@@ -75,13 +74,7 @@ var Notes = React.createClass({
 
   render() {
     var title = this.state.new_note_title,
-        text = this.state.new_note_text,
-        select_list_data = [],
-        data = this.props.data;
-
-    if(data && data.constructor == Array) {
-      select_list_data = data.map(function(notebook, index){ return [notebook.id, notebook.name] })
-    }
+        text = this.state.new_note_text;
 
     return (
       <div className='container-fluid row'>
@@ -94,7 +87,6 @@ var Notes = React.createClass({
         </div>
         <div className='col-md-4'>
           <div className='row white'>
-            New Note for <SelectBox className="select-list" name="notebooks" onValueChange={this.handleSelectBoxChange} defaultValue={0} rows={select_list_data } renderBlank={false}/>
             <button className='btn add-btn pull-right' onClick={this.createNote}> Create Note </button>
           </div>
           <div className='row new-note-title placeholder-title' id="textarea" contentEditable='true' onInput={this.changeNewNoteTitle}>

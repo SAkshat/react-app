@@ -11,6 +11,7 @@ var Evernote = React.createClass({
       currently_viewing: 'notes',
       notebooks: [
         {
+          id: 1,
           name: 'my-notebook1',
           notes: [
             {
@@ -20,24 +21,31 @@ var Evernote = React.createClass({
           ]
         },
         {
+          id: 2,
           name: 'my-notebook2'
         },
         {
+          id: 3,
           name: 'my-notebook3',
         },
         {
+          id: 4,
           name: 'my-notebook4'
         },
         {
+          id: 5,
           name: 'my-notebook5'
         },
         {
+          id: 6,
           name: 'my-notebook6'
         },
         {
+          id: 7,
           name: 'my-notebook7'
         },
         {
+          id: 8,
           name: 'my-notebook8'
         }
 
@@ -51,14 +59,41 @@ var Evernote = React.createClass({
 
   createNotebook: function(notebook_name) {
     var notebooks = this.state.notebooks
-    notebooks.push({ name: notebook_name })
+    notebooks.push({ name: notebook_name, id: $.now() })
     this.setState({notebooks: notebooks})
   },
 
-  createNote: function(note_title, note_text, notebook_index) {
+  createNote: function(note_title, note_text, notebook_id) {
     var notebooks = this.state.notebooks
-    notebooks[notebook_index].notes = notebooks[notebook_index].notes || []
-    notebooks[notebook_index].notes.push({ name: note_title, text: note_text })
+    var index = notebooks.findIndex(function(currentElement, currentIndex, array) {
+      return(currentElement.id == notebook_id)
+    });
+    if(index >= 0) {
+      notebooks[index].notes = notebooks[index].notes || [];
+      notebooks[index].notes.push({ name: note_title, text: note_text });
+    }
+    this.setState({notebooks: notebooks})
+  },
+
+  editNotebookName: function(notebook_id, notebook_name) {
+    var notebooks = this.state.notebooks
+    var index = notebooks.findIndex(function(currentElement, currentIndex, array) {
+      return(currentElement.id == notebook_id)
+    });
+    if(index >= 0) {
+      notebooks[index].name = notebook_name;
+    }
+    this.setState({notebooks: notebooks})
+  },
+
+  deleteNotebook: function(notebook_id) {
+    var notebooks = this.state.notebooks
+    var index = notebooks.findIndex(function(currentElement, currentIndex, array) {
+      return(currentElement.id == notebook_id)
+    });
+    if(index >= 0) {
+      notebooks.splice(index, 1);
+    }
     this.setState({notebooks: notebooks})
   },
 
@@ -73,14 +108,18 @@ var Evernote = React.createClass({
         </div>
         <div className='row app-body'>
           <div className='Col-md-2 sidebar'>
-            <div className='buttonlist'>
-              <Link to="/notebooks" className='button btn-block' {...this.props} >Notebooks</Link>
-              <Link to="/notes" className='button btn-block' {...this.props} >Notes</Link>
-            </div>
+            <Sidebar />
           </div>
           <div className='col-md-10'>
             <div className='row listing-section'>
-              {this.props.children}
+              {this.props.children && React.cloneElement(this.props.children, {
+                                                         data: this.state.notebooks,
+                                                         createNote: this.createNote,
+                                                         createNotebook: this.createNotebook,
+                                                         editNotebookName: this.editNotebookName,
+                                                         deleteNotebook: this.deleteNotebook
+                                                        })
+              }
             </div>
           </div>
         </div>

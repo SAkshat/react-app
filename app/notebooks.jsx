@@ -1,5 +1,6 @@
 import React from 'react';
 import NotebookAvatar from './notebook_avatar.jsx'
+import { browserHistory } from 'react-router'
 
 var Notebooks = React.createClass({
   getInitialState: function(){
@@ -25,13 +26,17 @@ var Notebooks = React.createClass({
     this.props.createNotebook(notebook_name)
   },
 
+  viewNotebook: function(notebook_id) {
+    browserHistory.push('/notebooks/' + notebook_id)
+  },
+
   renderNotebooks: function() {
-    var notebooks = this.props.data || []
+    var notebooks = this.props.data || [],
+        self = this;
     return notebooks.map( function(notebook, index) {
-      var _this = this
         return (
-          <div key={index}>
-            <NotebookAvatar data={notebook} />
+          <div key={notebook.id}>
+            <NotebookAvatar data={notebook} viewNotebook={self.viewNotebook} editNotebookName={self.props.editNotebookName} deleteNotebook={self.props.deleteNotebook} />
           </div>
         )
       }

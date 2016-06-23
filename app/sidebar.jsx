@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 var SideBar = React.createClass({
   getInitialState: function(){
@@ -6,19 +7,15 @@ var SideBar = React.createClass({
     }
   },
 
-  changeViewTo: function(e) {
-    this.props.changeViewTo(e.target.name)
-  },
-
   render() {
     return (
-    <div className='buttonlist' onClick={this.changeViewTo}>
-      <button className='button btn-block' name='notes'>
-        Notes
-      </button>
-      <button className='button btn-block' name='notebooks'>
-        Notebooks
-      </button>
+    <div className='buttonlist'>
+      <div className='button btn-block'>
+        <Link to="/notebooks" className='button btn-block'>Notebooks</Link>
+      </div>
+      <div className='button btn-block'>
+        <Link to="/notes" className='button btn-block'>Notes</Link>
+      </div>
     </div>
     );
   }

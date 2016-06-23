@@ -166,3 +166,16 @@ body {
   display: none;
 }
 
+.input-field {
+  width: 100%;
+}
+
+.fa-edit-notebook {
+  margin-top: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.pointer {
+  cursor: pointer;
+}

@@ -10,7 +10,6 @@ var SelectBox = React.createClass({
   },
 
   renderOptions: function() {
-    self = this
     return this.props.rows.map(function(row) {
       return (
         <option value={row[0]} name={row[0]} key={row[0]}>{row[1]}</option>
